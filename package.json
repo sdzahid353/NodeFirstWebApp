@@ -1,0 +1,24 @@
+{
+  "name": "nodefirstwebapp",
+  "version": "1.0.0",
+  "description": "My Web Application using NodeJs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdzahid353/NodeFirstWebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdzahid353/NodeFirstWebApp/issues"
+  },
+  "homepage": "https://github.com/sdzahid353/NodeFirstWebApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mysql": "^2.18.1"
+  }
+}
