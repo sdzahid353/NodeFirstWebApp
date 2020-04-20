@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/sdzahid353/NodeFirstWebApp#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1"

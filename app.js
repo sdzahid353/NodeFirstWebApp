@@ -1,6 +1,11 @@
 var express = require('express');
 var mysql = require('mysql');
+var bodyParser = require('body-parser')
 var app = express();
+
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended : true }))
+app.use(express.static(__dirname + "/public"))
 
 var connection = mysql.createConnection({
 	host : 'localhost',
@@ -11,7 +16,7 @@ var connection = mysql.createConnection({
 
 
 app.get("/", function(req,res){
-	res.send("Welcome to Homepage");
+	res.send("<h1>Welcome to Homepage</h1>");
 });
 
 
@@ -20,9 +25,25 @@ app.get("/users", function(req, res){
 	connection.query(q, function(err, result){
 		if (err) throw err;
 		var count = result[0].count
-		res.send("We have "+ count + " users");
+		// res.send("We have "+ count + " users");
+		res.render("home", {count : count});
 	});
 });
+
+
+app.post("/register", function(req,res){
+	var person = {
+		email : req.body.email
+	};
+	var query = `INSERT INTO users(email) VALUES("${person.email}")`;
+	console.log(query)
+	connection.query(query, function(err, result){
+		if (err) throw err;
+		console.log(result);
+		res.redirect("/users");
+	});
+});
+
 
 app.get("/joke", function(req,res){
 	var joke = "What do you call a dog that does magic tricks? A labracadabrador.";
